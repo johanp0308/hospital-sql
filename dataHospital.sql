@@ -1,6 +1,40 @@
 
--- 
+-- piso_especialidad2
 
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('A101',1,'Principal');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('B202',2,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('B202',3,'Principal');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('A101',4,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('A101',5,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('C303',6,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('C303',7,'Principal');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('C303',8,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('B202',9,'Secundario');
+INSERT INTO piso_especialidad(id_piso,id_especialidad,estado) VALUES('A101',10,'Principal');
+
+--  especialidad
+INSERT INTO especialidad (nombre) VALUES ('Cardiología');
+INSERT INTO especialidad (nombre) VALUES ('Ortopedia');
+INSERT INTO especialidad (nombre) VALUES ('Pediatría');
+INSERT INTO especialidad (nombre) VALUES ('Neurología');
+INSERT INTO especialidad (nombre) VALUES ('Gastroenterología');
+INSERT INTO especialidad (nombre) VALUES ('Oncología');
+INSERT INTO especialidad (nombre) VALUES ('Dermatología');
+INSERT INTO especialidad (nombre) VALUES ('Endocrinología');
+INSERT INTO especialidad (nombre) VALUES ('Oftalmología');
+INSERT INTO especialidad (nombre) VALUES ('Psiquiatría');
+
+-- habitacion
+INSERT INTO habitacion (camas, id_piso) VALUES (3, 'A101');
+INSERT INTO habitacion (camas, id_piso) VALUES (2, 'B202');
+INSERT INTO habitacion (camas, id_piso) VALUES (4, 'C303');
+INSERT INTO habitacion (camas, id_piso) VALUES (1, 'A104');
+INSERT INTO habitacion (camas, id_piso) VALUES (3, 'B205');
+INSERT INTO habitacion (camas, id_piso) VALUES (2, 'C306');
+INSERT INTO habitacion (camas, id_piso) VALUES (4, 'A107');
+INSERT INTO habitacion (camas, id_piso) VALUES (1, 'B208');
+INSERT INTO habitacion (camas, id_piso) VALUES (3, 'C309');
+INSERT INTO habitacion (camas, id_piso) VALUES (2, 'A110');
 -- Empleado
 INSERT INTO empleado (id, nombre, cargo) VALUES (1, 'Juan Pérez', 'Médico');
 INSERT INTO empleado (id, nombre, cargo) VALUES (2, 'Ana García', 'Enfermera');
