@@ -1,4 +1,71 @@
-#1 Base de Datos Hospital
+# 1 Base de Datos Hospital
+
+
+
+## Procedimientos
+1. Crear un procedimiento almacenado que asigne un empleado a un piso dado su identificador.
+
+   ```sql
+   # Solucion
+   ```
+
+2. Crear un procedimiento almacenado que asigne un empleado a un piso dado su identificador.
+
+   ```sql
+   # Solucion
+   ```
+
+3. Crear un procedimiento almacenado que cuente el número de habitaciones en un piso específico.
+
+   ```sql
+   # Solucion
+   ```
+
+4. Crear un procedimiento almacenado que actualice la ubicación de un piso dado su identificador.
+
+     ```sql
+       # Solucion
+     ```
+
+
+5. Crear un procedimiento almacenado que elimine la asignación de un empleado de un piso dado su identificador.
+
+    ```sql
+   # Solucion
+   ```
+
+6. Crear un procedimiento almacenado que devuelva los empleados que tienen una especialidad específica.
+
+     ```sql
+       # Solucion
+     ```
+
+7. Crear un procedimiento almacenado que cuente el número de edificios en un complejo hospitalario específico.
+
+    ```sql
+   # Solucion
+   ```
+
+8. Crear un procedimiento almacenado que devuelva los pisos asignados a empleados de un cargo específico.
+
+    ```sql
+   # Solucion
+   ```
+
+9. Crear un procedimiento almacenado que asigne una especialidad a un piso específico.
+
+    ```sql
+   # Solucion
+   ```
+
+10. Crear un procedimiento almacenado que devuelva los empleados que no están asignados a ningún piso.
+
+     ```sql
+       # Solucion
+     ```
+
+
+## Consultas
 
 ### Obtener el nombre del empleado que trabaja en el piso con id 3.
 
@@ -34,37 +101,65 @@ WHERE e.id = (
 ### Mostrar el nombre y la cantidad de camas de las habitaciones en el piso con id 8.
 
 ```sql
-SELECT h.id as habitacion, 
+SELECT h.id as habitacion, h.camas as camas
+FROM habitacion h
+JOIN piso p ON h.id_piso = p.id_piso_edificio
+WHERE p.nro_piso LIKE '08';
 ```
 
-### Obtener el nombre del empleado que trabaja en el edificio con id 6.
+### Obtener el nombre del empleado que trabaja en el edificio con id 'C'.
 
 ```sql
-
+SELECT e.nombre 
+FROM empleado e
+JOIN piso p ON e.id = p.id_empleado
+JOIN edificio ed ON p.id_edificio = ed.id
+WHERE ed.id LIKE 'C';  
 ```
 
-### Mostrar el nombre de las especialidades en el piso principal del edificio con id 3.
+### Mostrar el nombre de las especialidades en el piso principal del edificio con id 'A'.
 
 ```sql
-
+SELECT es.nombre
+FROM especialidad es
+JOIN piso_especialidad pe ON es.id = pe.id_especialidad
+JOIN piso p ON pe.id_piso = p.id_piso_edificio
+WHERE p.id_edificio LIKE 'A'
+AND pe.estado LIKE 'Principal';
 ```
 
-### Obtener el nombre y el cargo de los empleados que trabajan en el edificio con id 7.
+### Obtener el nombre y el cargo de los empleados que trabajan en el edificio con id 'B'.
 
 ```sql
-
+SELECT e.nombre, e.cargo
+FROM empleado e
+JOIN piso p ON e.id_piso = p.id_piso_edificio
+JOIN edificio ed ON e.id = p.id_edificio
+WHERE e.id LIKE 'B';
 ```
 
 ### Mostrar el nombre y la ubicación de los pisos con más de 15 camas.
 
 ```sql
-
+SELECT p.id_piso_edificio, ed.ubicacion
+FROM piso p
+JOIN edificio ed ON p.id_edificio = ed.id
+JOIN habitacion h ON p.id_piso_edificio = h.id_piso
+WHERE h.camas >15;
 ```
 
 ### Obtener el nombre del complejo hospitalario que tiene el mayor número de edificios.
 
 ```sql
+SELECT DISTINCT c.nombre 
+FROM edificio e, c.nombre
+WHERE e.id_complejo >= ALL(
+    SELECT MAX(ed.id_complejo)
+    FROM edificio ed
+)
+GROUP BY
 
+;
 ```
 
 ### Mostrar el nombre y la especialidad de los empleados que trabajan en el piso principal del edificio con id 1.
