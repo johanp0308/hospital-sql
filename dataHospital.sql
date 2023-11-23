@@ -47,6 +47,15 @@ INSERT INTO empleado (id, nombre, cargo) VALUES (8, 'Sofía Gómez', 'Enfermera'
 INSERT INTO empleado (id, nombre, cargo) VALUES (9, 'Javier Mendoza', 'Médico');
 INSERT INTO empleado (id, nombre, cargo) VALUES (10, 'Isabel Ramírez', 'Administrativo');
 
+-- empledos
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Ana García', 'Enfermera','A101');
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Ana Mari','Enfermera','A104');
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Pedro Parado', 'Enfermero','A101');
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Luis Santos', 'Enfermero','A104');
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Giunaldo Garcia', 'Enfermero','A101');
+INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Orlando Castro', 'Enfermero','A101');
+
+
 -- Piso
 INSERT INTO piso (id_piso_edificio, id_edificio, id_empleado, nro_piso) VALUES ('A101', 'A', 1, '01');
 INSERT INTO piso (id_piso_edificio, id_edificio, id_empleado, nro_piso) VALUES ('B202', 'B', 2, '02');
