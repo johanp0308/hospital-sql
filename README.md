@@ -152,32 +152,46 @@ WHERE h.camas >15;
 
 ```sql
 SELECT DISTINCT c.nombre 
-FROM edificio e, c.nombre
+FROM edificio e, complejo_hospitalario c
 WHERE e.id_complejo >= ALL(
     SELECT MAX(ed.id_complejo)
     FROM edificio ed
+    JOIN complejo_hospitalario co ON ed.id_complejo = co.id
 )
-GROUP BY
+GROUP BY c.nombre;
 
-;
 ```
 
 ### Mostrar el nombre y la especialidad de los empleados que trabajan en el piso principal del edificio con id 1.
 
 ```sql
-
+SELECT e.nombre, es.nombre
+FROM empleado e
+JOIN piso p ON e.id_piso = p.id_piso_edificio
+JOIN edificio ed ON ed.id = p.id_edificio
+JOIN piso_especialidad pe ON p.id_piso_edificio = pe.id_piso
+JOIN especialidad es ON pe.id_especialidad = es.id
+WHERE pe.estado LIKE 'Principal';
 ```
 
 ### Obtener el nombre y la ubicación de los pisos donde trabaja un "Jefe".
 
 ```sql
-
+SELECT p.id_piso_edificio, ed.ubicacion
+FROM piso p
+JOIN empleado e ON e.id_piso = p.id_piso_edificio
+JOIN edificio ed ON ed.id = p.id_edificio
+WHERE e.cargo = 'Jefe';
 ```
 
 ### Mostrar el nombre y el cargo de los empleados que trabajan en más de un piso.
 
 ```sql
-
+SELECT e.nombre, e.cargo
+FROM piso p
+JOIN empleado e ON p.id_piso_edificio = e.id_piso
+GROUP BY e.nombre, e.cargo
+HAVING COUNT(DISTINCT p.id_piso_edificio);
 ```
 
 ### Obtener el nombre y la cantidad de camas de las habitaciones en el piso principal del edificio con id 2.
