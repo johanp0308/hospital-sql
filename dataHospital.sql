@@ -46,6 +46,8 @@ INSERT INTO empleado (id, nombre, cargo) VALUES (7, 'Alejandro Torres', 'Adminis
 INSERT INTO empleado (id, nombre, cargo) VALUES (8, 'Sofía Gómez', 'Enfermera');
 INSERT INTO empleado (id, nombre, cargo) VALUES (9, 'Javier Mendoza', 'Médico');
 INSERT INTO empleado (id, nombre, cargo) VALUES (10, 'Isabel Ramírez', 'Administrativo');
+INSERT INTO empleado (nombre, cargo, id_piso) VALUES ('Jose Martinez', 'Jefe','A101');
+
 
 -- empledos
 INSERT INTO empleado (nombre, cargo,id_piso) VALUES ('Ana García', 'Enfermera','A101');
