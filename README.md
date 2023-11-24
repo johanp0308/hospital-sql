@@ -191,17 +191,22 @@ SELECT e.nombre, e.cargo
 FROM piso p
 JOIN empleado e ON p.id_piso_edificio = e.id_piso
 GROUP BY e.nombre, e.cargo
-HAVING COUNT(DISTINCT p.id_piso_edificio);
+HAVING COUNT(DISTINCT p.id_piso_edificio) > 2;
 ```
 
-### Obtener el nombre y la cantidad de camas de las habitaciones en el piso principal del edificio con id 2.
+### Obtener el nombre y la cantidad de camas de las habitaciones en el piso principal del edificio con id 'D'.
 
 ```sql
-
+SELECT h.id, h.camas
+FROM habitacion h
+JOIN piso p ON h.id_piso = p.id_piso_edificio
+WHERE p.id_edificio = (SELECT id FROM edificio WHERE id = 'D');
 ```
 
 ### Mostrar el nombre del complejo hospitalario que tiene al menos un edificio sin asignación de empleados.
 
 ```sql
-
+SELECT c.nombre
+FROM complejo_hospitalario c
+WHERE c.id NOT IN (SELECT DISTINCT ed.id_complejo FROM edificio)
 ```
