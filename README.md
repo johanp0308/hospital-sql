@@ -6,7 +6,7 @@
 1. Crear un procedimiento almacenado que asigne un empleado a un piso dado su identificador.
 
    ```sql
-   # Solucion
+   
    ```
 
 2. Crear un procedimiento almacenado que asigne un empleado a un piso dado su identificador.

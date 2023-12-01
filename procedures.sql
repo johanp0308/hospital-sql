@@ -1,0 +1,117 @@
+DROP PROCEDURE IF EXISTS asignar_piso_empleado;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS asignar_piso_empleado(
+    IN in_idEmpleado INT,
+    IN in_idPiso VARCHAR(30)
+)
+BEGIN
+    DECLARE var_idEmpleado IN;
+    DECLARE var_idPiso VARCHAR(30);
+
+    DECLARE EXIT HANDLER SQLEXCEPTION
+    BEGIN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: Error al asginar un piso';
+        ROLLBACK;
+    END
+    START TRANSACTION;
+    SELECT e.id INTO var_idEmpleado
+    FROM empleado e
+    WHERE e.di = in_idEmpleado;
+
+    SELECT p.id_piso_edificio INTO var_idPiso
+    FROM piso p
+    WHERE p.id_piso_edificio = in_idPiso;
+
+    IF (var_idEmpleado IS NOT NULL AND var_idPiso IS NOT NULL) 
+    THEN
+        UPDATE empleado e
+        SET e.id_piso = var_idPiso
+        WHERE e.id = var_idEmplead;
+
+    END IF;
+    
+    COMMIT;
+    
+    SELECT 'Empleado Asignado' as Mesagge;
+
+END //
+DELIMITER ;
+CALL asignar_piso_empleado(1,'A23')
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS name_prc;
+DELIMITER //
+CREATE PROCEDURE IF EXISTS name_prc()
+BEGIN
+END //
+DELIMITER ;
